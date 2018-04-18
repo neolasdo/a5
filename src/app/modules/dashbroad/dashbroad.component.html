@@ -1,0 +1,97 @@
+<div class="text-center">
+    <h2>Slide Shows</h2>
+    <slideshow
+            (onSwipeLeft)="swipeLeft()"
+            (onSwipeRight)="swipeRight()"
+            [height]="'350px'"
+            [minHeight]="'200px'"
+            [autoPlay]="false"
+            [showArrows]="true"
+            [autoPlayInterval]="2000"
+            [stopAutoPlayOnSlide]="true"
+            [showDots]="true"
+            [dotColor]="'#fff'"
+            [showCaptions]="true"
+            [captionColor]="'#FFFFFF'"
+            [imageUrls]="imageSources"
+            [lazyLoad]="imageSources?.length > 1"
+            [autoPlayWaitForLazyLoad]="true">
+    </slideshow>
+</div>
+<div class="text-center">
+    <h2>Modal</h2>
+    <button type="button" class="btn btn-primary" (click)="showModal()">Render auto-shown modal</button>
+    <div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal"
+         class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-auto-name">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="dialog-auto-name" class="modal-title pull-left">Auto shown modal</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>I am a modal that is shown right after initialization!</p>
+                    <p>I wasn't present in DOM until you clicked the button</p>
+                    <p>When you close me, I'll be removed from the DOM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="text-center">
+    <h2>Collapse</h2>
+    <button type="button" class="btn btn-primary"
+            (click)="isCollapsed = !isCollapsed">Toggle collapse
+    </button>
+    <div [collapse]="isCollapsed" class="card card-block card-header">
+        <div class="well well-lg">Some content</div>
+    </div>
+</div>
+<hr>
+<div class="text-center">
+    <h2>DatePicker</h2>
+    <div class="row">
+        <div class="col-xs-12 col-12 col-md-4 col-md-offset-2 form-group">
+            <input type="text"
+                   placeholder="Datepicker"
+                   class="form-control"
+                   [bsValue]="bsValue"
+                   [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD',  containerClass: 'theme-red' }"
+                   bsDatepicker>
+        </div>
+        <div class="col-xs-12 col-12 col-md-4 form-group">
+            <input type="text"
+                   placeholder="Daterangepicker"
+                   class="form-control"
+                   [(ngModel)]="bsRangeValue"
+                   bsDaterangepicker>
+        </div>
+    </div>
+
+</div>
+<hr>
+
+<div class="text-center">
+    <h2>Dropdown</h2>
+    <div class="btn-group" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                aria-controls="dropdown-basic">
+            Button dropdown <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+            role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<hr>
+
