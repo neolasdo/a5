@@ -8,6 +8,10 @@ import { LayoutComponent } from './layout/layout.component';
 import {AuthGuard} from './shared/auth/auth.guard';
 import {AuthService} from './shared/auth/auth.service';
 import {JwtService} from './shared/services/jwt.service';
+import {ApiService} from './shared/services/api.service';
+import {HttpClientService} from './shared/services/http-client.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AppInterceptorService} from './shared/auth/app-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -17,12 +21,16 @@ import {JwtService} from './shared/services/jwt.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
+      {provide: HTTP_INTERCEPTORS, useClass: AppInterceptorService, multi: true},
       AuthGuard,
       AuthService,
-      JwtService
+      JwtService,
+      ApiService,
+      HttpClientService,
   ],
   bootstrap: [AppComponent]
 })
