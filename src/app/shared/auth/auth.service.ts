@@ -46,14 +46,14 @@ export class AuthService {
             email,
             password
         }).pipe(map(
-            data => {
-                if (data.hasOwnProperty('error')) {
+            res => {
+                if (res.hasOwnProperty('error')) {
 
                 } else {
                     const user: User = {
-                        id: data.data.user.id,
+                        id: res.data.user.id,
                         email: email,
-                        token: data.data.token,
+                        token: res.data.token,
                         first_name: '',
                         last_name: '',
                         is_admin: true
@@ -61,8 +61,7 @@ export class AuthService {
 
                     this.setSession(user);
                 }
-
-                return data;
+                return res;
             }));
         // if (user.toLowerCase() === this.user.username.toLowerCase() && password === this.user.password) {
         //     this.user.token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
