@@ -22,6 +22,14 @@ const routes: Routes = [
                 path: 'home',
                 loadChildren: './modules/dashbroad/dashbroad.module#DashbroadModule'
             },
+            {
+                path: 'tryout',
+                loadChildren: './modules/tryout/tryout.module#TryoutModule'
+            },
+            {
+                path: 'demo',
+                loadChildren: './modules/demo/demo.module#DemoModule'
+            },
         ]
     },
     {

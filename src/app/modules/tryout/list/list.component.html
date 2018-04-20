@@ -1,0 +1,25 @@
+<div class="animated fadeIn container">
+  <div class="clock text-center">
+    <h4>Clock</h4>
+    <p class="test-animation" [@flyInOut]="state" (click)="stopRotate()"></p>
+    <h4>{{time | date:"HH:mm:ss" }}</h4>
+    <button class="btn btn-default" (click)="stopTime()" >Stop</button>
+    <button class="btn btn-success" (click)="startTime()" >Start</button>
+  </div>
+
+  <div class="list hide ">
+    <h4>Show list data</h4>
+    <ul>
+      <li *ngFor="let tryout of tryouts">
+        {{tryout.name}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="container text-center" style="padding-bottom: 20px">
+    <h4>Test canvas</h4>
+    <canvas #canvas style="background: #000; color: #fff"></canvas>
+    <br>
+    <button class="btn btn-danger" (click)="clearCanvas()"> Clear</button>
+  </div>
+</div>

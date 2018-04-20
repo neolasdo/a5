@@ -42,7 +42,7 @@ export class AuthService {
         return this.jwt.getToken();
     }
     public login(email: string, password: string) {
-        return this.apiService.post('athletes/login', {
+        return this.apiService.post('coaches/login', {
             email,
             password
         }).pipe(map(
@@ -50,25 +50,15 @@ export class AuthService {
                 if (res.hasOwnProperty('error')) {
 
                 } else {
-                    const user: User = {
-                        id: res.data.user.id,
-                        email: email,
+                    const user = {
+                        user: res.data.user,
                         token: res.data.token,
-                        first_name: '',
-                        last_name: '',
-                        is_admin: true
                     };
 
                     this.setSession(user);
                 }
                 return res;
             }));
-        // if (user.toLowerCase() === this.user.username.toLowerCase() && password === this.user.password) {
-        //     this.user.token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
-        //         'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.' +
-        //         'XbPfbIHMI6arZ3Y922BhjWgQzWXcXNrz0ogtVhfEd2o';
-        //     this.jwt.setUser(this.user);
-        // } else return;
     }
     private setSession(user) {
         this.jwt.setUser(user);
