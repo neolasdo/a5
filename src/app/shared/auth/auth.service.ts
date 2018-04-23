@@ -12,11 +12,6 @@ export class AuthService {
     private currentUserSubject = new BehaviorSubject<User>({} as User);
     private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
 
-    user: Users = {
-        id : 1,
-        username: 'neolasdo',
-        password: 'abc123'
-    };
     constructor(private jwt: JwtService, private apiService: ApiService) {
     }
 

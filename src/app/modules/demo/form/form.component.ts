@@ -18,11 +18,14 @@ export class FormComponent implements OnInit {
     ngOnInit() {
         this.user = new Users();
         this.form = new FormGroup({
-            'name': new FormControl(this.user.username, [
-                Validators.required,
-                Validators.minLength(4),
-                forbiddenNameValidator(/bob/i) // <-- Here's how you pass in the custom validator.
-            ]),
+            'name': new FormControl(this.user.username, {
+                validators: [
+                    Validators.required,
+                    Validators.minLength(4),
+                    forbiddenNameValidator(/bob/i), // <-- Here's how you pass in the custom validator.
+                ],
+                updateOn: 'blur'
+            }),
         });
     }
 
