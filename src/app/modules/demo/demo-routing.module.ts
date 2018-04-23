@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {FormComponent} from './form/form.component';
 import {DemoComponent} from './demo.component';
+import {AppGridsterComponent} from './app-gridster/app-gridster.component';
 
 const routes: Routes = [
     {
@@ -12,6 +13,7 @@ const routes: Routes = [
         },
         children: [
             {path: 'form', component: FormComponent, data: {title: 'Form'}},
+            {path: 'gridster', component: AppGridsterComponent, data: {title: 'Gridster'}},
         ]
     }
 ];
